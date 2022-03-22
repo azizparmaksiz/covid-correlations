@@ -2,7 +2,7 @@
 
 This rest service return correlation coefficient of death and vaccinated count.
 
-The covid death and vaccinated data fetch from [COVID API](https://github.com/M-Media-Group/Covid-19-API)
+The covid-19 related deaths and vaccinated counts data are fetched from [COVID API](https://github.com/M-Media-Group/Covid-19-API)
 
 ### Setup
 This application use;
@@ -10,7 +10,7 @@ This application use;
 * Redis for Caching.
 
 calling [COVID API](https://github.com/M-Media-Group/Covid-19-API) frequently may result banning your ip.
-For this result I use caching to keep data on local. 
+For this reason I use caching to keep data on local. 
 
 To run application you will need [Redis](https://redis.io/) server installed or has access to any redis server.
 
