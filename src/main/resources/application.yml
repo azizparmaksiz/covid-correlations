@@ -9,6 +9,7 @@ spring:
     redis:
       cache-null-values: false
       time-to-live: '600000'
+    type: redis
 
 covid:
   api:

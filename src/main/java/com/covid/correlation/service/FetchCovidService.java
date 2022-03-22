@@ -55,7 +55,7 @@ public class FetchCovidService {
     private Map<String, Map<String, CovidVaccinatedDto>> fetchAllVaccines(){
 //            String file = "src/main/resources/all-vaccines-data.json";
 //           String json = readFileAsString(file);
-            String json = getCovidValues(vaccinesEndPoint);
+            String json = fetchCovidData(vaccinesEndPoint);
             Type vaccinesType = new TypeToken<Map<String, Map<String, CovidVaccinatedDto>>>() {}.getType();
             Gson gson =  new Gson();
             return gson.fromJson(json, vaccinesType);
@@ -65,7 +65,7 @@ public class FetchCovidService {
     private Map<String, Map<String, CovidCaseDto>> fetchAllCases(){
 //            String file = "src/main/resources/all-cases-data.json";
 //           String json = readFileAsString(file);
-           String json = getCovidValues(casesEndPoint);
+           String json = fetchCovidData(casesEndPoint);
 
             Type vaccinesType = new TypeToken<Map<String, Map<String, CovidCaseDto>>>() {}.getType();
             Gson gson =  new Gson();
@@ -79,7 +79,7 @@ public class FetchCovidService {
 //        return new String(Files.readAllBytes(Paths.get(file)));
 //    }
 
-    private String getCovidValues(String endPoint) {
+    private String fetchCovidData(String endPoint) {
 
         String url = covidApiUrl +endPoint;
 
@@ -88,7 +88,7 @@ public class FetchCovidService {
             return restTemplate.getForObject(url, String.class);
         }catch (Exception e){
             log.error("Unable to fetch data for endpoint {}, errorMessage= {}",endPoint,e.getMessage());
-            throw new ServerException("Covid server api unreachable");
+            throw new ServerException("Covid server api unreachable or URL error");
         }
     }
 

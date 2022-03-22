@@ -3,9 +3,9 @@ package com.covid.correlation.service;
 import com.covid.correlation.dto.ContinentEnum;
 import com.covid.correlation.dto.CovidCaseDto;
 import com.covid.correlation.dto.ResponseCorrelationDto;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +15,10 @@ import java.util.Map;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class CorrelationServiceImp implements CorrelationService {
 
-    @Autowired
-    private FetchCovidService fetchCovidService;
+    private final FetchCovidService fetchCovidService;
 
     @Cacheable(value = "correlation", key = "#continent")
     @Override
